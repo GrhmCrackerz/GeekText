@@ -1,0 +1,157 @@
+[
+		{
+			"bookISBN13": "978-1982103521",
+			"bookISBN": "1982103523",
+			"title": "The Mist",
+			"author": "Stephen King",
+			"genre": ["horror", "suspense", "fiction"],
+			"copiesSold": "15000",
+			"rating": "",
+			"publisher": "Scribner",
+			"discount": "10",
+			"yearPublished": "2018",
+			"bookDescription":	"The small town of Brigton, Maine is shrouded in a dense mist that conceals otherwordly creatures."
+		
+		},
+		{
+			"bookISBN13": "978-0393358384",
+			"bookISBN": "0393358380",
+			"title": "A Random Walk Down Wall Street: The Time-Tested Strategy for Successful Investing",
+			"author": "Burton G. Malkiel",
+			"genre": ["Personal finance", "Money management", "education", "non-fiction"],
+			"copiesSold": "13000",
+			"rating": [],
+			"publisher": "W. W. Norton & Company",
+			"discount": "10",
+			"yearPublished": "2020",
+			"bookDescription": "A book on the subject of stock markets which popularized the random walk hypothesis."
+		
+		},
+		{
+			"bookISBN13": "978-0451524935",
+			"bookISBN": "9780451524935",
+			"title": "1984",
+			"author": "George Orwell",
+			"genre": ["fiction", "dystopia", "classic"],
+			"copies sold": "40000",
+			"rating": [],
+			"publisher": "Signet Classic",
+			"discount": "20",
+			"year published": "1961",
+			"book description":	"Great Britain, now known as Airstrip One, has become a province of the totalitarian superstate Oceania, which is led by Big Brother, a dictatorial leader supported by an intense cult of personality manufactured by the Party's Thought Police."
+		
+		},
+		{
+			"bookISBN13": "978-0441013593",
+			"bookISBN": "0441013597",
+			"title": "Dune",
+			"author": "Frank Herbert",
+			"genre": ["fiction", "sci-fi", "space opera"],
+			"copies sold": "23500",
+			"rating": [],
+			"publisher": "Penguin Publishing Group",
+			"discount": "5",
+			"year published": "2005",
+			"book description":	"Set on the desert planet Arrakis, Dune is the story of the boy Paul Atreides, heir to a noble family tasked with ruling an inhospitable world where the only thing of value is the spice melange, a drug capable of extending life and enhancing consciousness."
+		
+		},
+		{
+			"bookISBN13": "978-0553380163",
+			"bookISBN": "9780553380163",
+			"title": "A Brief History of Time",
+			"author": "Stephen Hawking",
+			"genre": ["non-fiction", "education", "physics"],
+			"copies sold": "7890",
+			"rating": [],
+			"publisher": "Bantam",
+			"discount": "5",
+			"year published": "1998",
+			"book description":	"A Brief History of Time plunges into the exotic realms of black holes and quarks, of antimatter and arrows of time, of the big bang and a bigger God-where the possibilities are wondrous and unexpected."
+		
+		},
+		{
+			"bookISBN13": "978-0743273565",
+			"bookISBN": "9780743273565",
+			"title": "The Great Gatsby",
+			"author": "F. Scott Fitzgerald",
+			"genre": ["fiction", "drama", "classic"],
+			"copies sold": "37200",
+			"rating": [],
+			"publisher": "Scribner",
+			"discount": "30",
+			"year published": "2004",
+			"book description":	"The story of a mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island at a time when The New York Times noted gine was the national drink and sex the national obsession."
+		
+		},
+		{
+			"bookISBN13": "978-0446310789",
+			"bookISBN": "0446310786",
+			"title": "To Kill a Mockingbird",
+			"author": "Harper Lee",
+			"genre": ["classic", "drama"],
+			"copies sold": "33890",
+			"rating": [],
+			"publisher": "Grand Central Publishing",
+			"discount": "10",
+			"year published": "1988",
+			"book description":	"The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it."
+		
+		},
+		{
+			"bookISBN13": "978-0544003415",
+			"bookISBN": "9780544003415",
+			"title": "The Lord Of The Rings",
+			"author": "J.R.R. Tolkien",
+			"genre": ["fiction", "fantasy"],
+			"copies sold": "50500",
+			"rating": [],
+			"publisher": "William Morrow Paperbacks",
+			"discount": "5",
+			"year published": "2012",
+			"book description":	"The Lord of the Rings tells of the great quest undertaken by Frodo and the Fellowship of the Ring: Gandalf the Wizard; the hobbits Merry, Pippin, and Sam; Gimli the Dwarf; Legolas the Elf; Boromir of Gondor; and a tall, mysterious stranger called Strider."
+		
+		},
+		{
+			"bookISBN13": "978-0743297332",
+			"bookISBN": "0743297334",
+			"title": "The Sun Also Rises",
+			"author": "Ernest Hemingway",
+			"genre": ["classic", "fiction"],
+			"copies sold": "16000",
+			"rating": [],
+			"publisher": "Scribner",
+			"discount": "8",
+			"year published": "2006",
+			"book description":	 "The story follows the flamboyant Brett and the hapless Jake as they journey from the wild nightlife of 1920s Paris to the brutal bullfighting rings of Spain with a motley group of expatriates."
+		
+		},
+		{
+			"bookISBN13": "978-0679732761",
+			"bookISBN": "9780679732761",
+			"title": "Invisible Man",
+			"author": "Ralph Ellison",
+			"genre": ["fiction", "classic"],
+			"copies sold": "6800",
+			"rating": [],
+			"publisher": "Vintage Books",
+			"discount": "10",
+			"year published": "1995",
+			"book description":	"He describes growing up in a Black community in the South, attending a Black college from which he is expelled, moving to New York and becoming the chief spokesman of the Harlem branch of the Brotherhood, before retreating amid violence and confusion."
+		
+		},
+		{
+			"bookISBN13": "978-0439708180",
+			"bookISBN": "0439708184",
+			"title": "Harry Potter and the Sorcerer's Stone",
+			"author": "J.K. Rowling",
+			"genre": ["fiction", "fantasy",]
+			"copies sold": "80000",
+			"rating": [],
+			"publisher": "Scholastic",
+			"discount": "5",
+			"year published": "1998",
+			"book description":	"Everything changes when Harry is summoned to attend an infamous school for wizards, and he begins to discover some clues about his illustrious birthright."
+		
+		}
+		
+]
