@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
 import java.util.List;
 
@@ -28,5 +29,6 @@ public class Book {
     private String bookDescription;
     //private List<String> rating;
 
+    @DocumentReference
     private List<Review> rating;
 }
