@@ -1,9 +1,9 @@
 package dev.group12.books;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,5 +19,10 @@ public class BookService {
 
     public Optional<Book> singleBook(String bookISBN){
         return bookRepository.findBookByBookISBN(bookISBN);
+    }
+
+    public Optional<Book> getBooksByGenre(String genre){
+        List<Book> books = new ArrayList<>();
+        return bookRepository.findBookByGenre(genre);
     }
 }

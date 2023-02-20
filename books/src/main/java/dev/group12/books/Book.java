@@ -17,16 +17,17 @@ import java.util.List;
 @NoArgsConstructor
 public class Book {
     @Id
-    private ObjectId id;
-    private String bookISBN;
-    private String title;
-    private String author;
-    private List<String> genres;
-    private String copiesSold;
-    private String publisher;
-    private String discount;
-    private String yearPublished;
-    private String bookDescription;
+    private ObjectId id; //object id created with MongoDB
+    private String bookISBN; //actual ISBN of book
+    private String title; // General info
+    private String author; // General info
+    private List<String> genre; // ArrayList to include the genres applicable to book
+    //private String genre;
+    private String copiesSold; // Needed for BestSeller feature
+    private String publisher; // Needed for feature that updates discounts by publisher
+    private String discount; // variable to be updated
+    private String yearPublished; // General info
+    private String bookDescription; //General info
     //private List<String> rating;
 
     @DocumentReference

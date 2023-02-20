@@ -27,4 +27,9 @@ public class BookController {
         return new ResponseEntity<Optional<Book>>(bookService.singleBook(ISBN), HttpStatus.OK);
 
     }
+
+    @GetMapping("/genre/{genre}")
+    public ResponseEntity<Optional<Book>> getBooksByGenre(@PathVariable("genre") String genre){
+        return new ResponseEntity<Optional<Book>>(bookService.getBooksByGenre(genre), HttpStatus.OK);
+    }
 }
