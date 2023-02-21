@@ -17,13 +17,8 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping
-<<<<<<< Updated upstream
     public ResponseEntity<List<Book>> getAllBooks(){
         return new ResponseEntity<List<Book>>(bookService.allBooks(), HttpStatus.OK);
-=======
-    public ResponseEntity<String> allBooks(){
-        return new ResponseEntity<String>("All Books!", HttpStatus.OK);
->>>>>>> Stashed changes
     }
 
     @GetMapping("/{ISBN}")
