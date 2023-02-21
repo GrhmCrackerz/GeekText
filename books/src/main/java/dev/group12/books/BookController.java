@@ -1,6 +1,5 @@
 package dev.group12.books;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +11,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1/books")
 public class BookController {
+
 
     @Autowired
     private BookService bookService;
@@ -29,7 +29,9 @@ public class BookController {
     }
 
     @GetMapping("/genre/{genre}")
-    public ResponseEntity<Optional<Book>> getBooksByGenre(@PathVariable("genre") String genre){
-        return new ResponseEntity<Optional<Book>>(bookService.getBooksByGenre(genre), HttpStatus.OK);
+    public ResponseEntity<List<Book>> getBooksByGenre(@PathVariable List<String> genre) {
+        List<Book> books = bookService.getBooksByGenre(genre);
+        return new ResponseEntity<>(books, HttpStatus.OK);
     }
+
 }
