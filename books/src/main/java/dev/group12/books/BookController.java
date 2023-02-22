@@ -40,4 +40,10 @@ public class BookController {
         return new ResponseEntity<>(topSellingBooks, HttpStatus.OK);
     }
 
+    @GetMapping("/rating/{rating}")
+    public ResponseEntity<List<Book>> getBooksByRating(@PathVariable double rating){
+        List<Book> books = bookService.getBooksByRating(rating);
+        return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
 }

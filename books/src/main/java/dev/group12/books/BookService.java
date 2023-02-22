@@ -33,4 +33,9 @@ public class BookService {
         return bookRepository.findAll(pageRequest).getContent();
     }
 
+    public List<Book> getBooksByRating(double rating){
+        Sort sortByRatingDesc = Sort.by(Sort.Direction.DESC, "rating");
+        return bookRepository.findByRatingGreaterThanEqual(rating, sortByRatingDesc);
+    }
+
 }

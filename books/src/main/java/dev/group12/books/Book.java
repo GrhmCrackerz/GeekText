@@ -18,21 +18,18 @@ import java.util.List;
 public class Book {
     @Id
     private String id;
-    //private ObjectId id; //object id created with MongoDB
     private String bookISBN; //actual ISBN of book
     private String title; // General info
     private String author; // General info
     private List<String> genre; // ArrayList to include the genres applicable to book
-    //private String copiesSold; // Needed for BestSeller feature
-    private int salesCount;
+    private int salesCount; //Used for BestSeller feature
     private String publisher; // Needed for feature that updates discounts by publisher
     private String discount; // variable to be updated
     private String yearPublished; // General info
     private String bookDescription; //General info
     private String price;
 
-    @DocumentReference
-    private List<Review> rating;
+    private double rating;
 
     public String getBookISBN() {
         return bookISBN;
