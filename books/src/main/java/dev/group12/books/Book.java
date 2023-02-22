@@ -23,13 +23,12 @@ public class Book {
     private String title; // General info
     private String author; // General info
     private List<String> genre; // ArrayList to include the genres applicable to book
-    //private String genre;
-    private String copiesSold; // Needed for BestSeller feature
+    //private String copiesSold; // Needed for BestSeller feature
+    private int salesCount;
     private String publisher; // Needed for feature that updates discounts by publisher
     private String discount; // variable to be updated
     private String yearPublished; // General info
     private String bookDescription; //General info
-    //private List<String> rating;
     private String price;
 
     @DocumentReference
@@ -66,14 +65,14 @@ public class Book {
     public void setGenre(List<String> genre) {
         this.genre = genre;
     }
-
-    public String getCopiesSold() {
-        return copiesSold;
-    }
-
-    public void setCopiesSold(String copiesSold) {
-        this.copiesSold = copiesSold;
-    }
+//
+//    public String getCopiesSold() {
+//        return copiesSold;
+//    }
+//
+//    public void setCopiesSold(String copiesSold) {
+//        this.copiesSold = copiesSold;
+//    }
 
     public String getPublisher() {
         return publisher;
@@ -113,5 +112,13 @@ public class Book {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public int getSalesCount() {
+        return salesCount;
+    }
+
+    public void setSalesCount(int salesCount) {
+        this.salesCount = salesCount;
     }
 }

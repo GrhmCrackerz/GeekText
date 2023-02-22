@@ -1,6 +1,8 @@
 package dev.group12.books;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,5 +27,10 @@ public class BookService {
         return bookRepository.findByGenreIn(genre);
     }
 
+    public List<Book> getTopSellingBooks(){
+        Sort sortBySalesCountDesc = Sort.by(Sort.Direction.DESC, "salesCount");
+        PageRequest pageRequest = PageRequest.of(0,10, sortBySalesCountDesc);
+        return bookRepository.findAll(pageRequest).getContent();
+    }
 
 }
