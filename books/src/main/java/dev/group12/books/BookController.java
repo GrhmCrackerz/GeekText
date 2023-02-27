@@ -46,4 +46,10 @@ public class BookController {
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
+    @PutMapping("/publisher/{publisher}")
+    public ResponseEntity<String> updatePricesByPublisher(@PathVariable String publisher, @RequestParam double discountPercent){
+        bookService.updatePricesByPublisher(publisher, discountPercent);
+        return new ResponseEntity<>("Prices updated for publisher: " + publisher, HttpStatus.OK);
+    }
+
 }

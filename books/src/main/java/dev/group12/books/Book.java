@@ -27,7 +27,7 @@ public class Book {
     private String discount; // variable to be updated
     private String yearPublished; // General info
     private String bookDescription; //General info
-    private String price;
+    private double price;
 
     private double rating;
 
@@ -103,11 +103,11 @@ public class Book {
         this.bookDescription = bookDescription;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

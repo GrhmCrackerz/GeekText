@@ -38,4 +38,14 @@ public class BookService {
         return bookRepository.findByRatingGreaterThanEqual(rating, sortByRatingDesc);
     }
 
+    public void updatePricesByPublisher(String publisher, double discountPercent){
+        List<Book> books = bookRepository.findByPublisher(publisher);
+        for(Book book : books){
+            double currentPrice = book.getPrice();
+            double newPrice = currentPrice * (1 - (discountPercent / 100));
+            book.setPrice(newPrice);
+            bookRepository.save(book);
+        }
+    }
+
 }
