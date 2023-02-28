@@ -38,14 +38,38 @@ public class BookService {
         return bookRepository.findByRatingGreaterThanEqual(rating, sortByRatingDesc);
     }
 
-    public void updatePricesByPublisher(String publisher, double discountPercent){
+    public void updatePricesByPublisher(String publisher, double discount) {
         List<Book> books = bookRepository.findByPublisher(publisher);
+        for (Book book : books) {
+            double currentPrice = book.getPrice();
+            double discountedPrice = currentPrice - (currentPrice * (discount / 100));
+            book.setPrice(discountedPrice);
+        }
+        bookRepository.saveAll(books);
+    }
+
+//    public Book applyDiscount(String bookISBN, double discount){
+//        Book book = bookRepository.findBookByBookISBN(bookISBN).orElseThrow(() -> new BookNotFoundException(bookISBN));
+//        double currentPrince = book.getPrice();
+//        double discountedPrice = currentPrince - (currentPrice * (discount / 100));
+//        book.setPrice(discountedPrice);
+//        return bookRepository.save(book);
+//    }
+
+
+    public List<Book> getBooksByPublisher(String publisher){
+        return bookRepository.findByPublisher(publisher);
+    }
+
+    public int applyDiscountToAllBooks(double discount){
+        List<Book> books = bookRepository.findAll();
         for(Book book : books){
             double currentPrice = book.getPrice();
-            double newPrice = currentPrice * (1 - (discountPercent / 100));
-            book.setPrice(newPrice);
-            bookRepository.save(book);
+            double discountedPrice = currentPrice - (currentPrice * (discount / 100));
+            book.setPrice(discountedPrice);
         }
+        bookRepository.saveAll(books);
+        return books.size();
     }
 
 }
