@@ -43,7 +43,8 @@ public class BookService {
         for (Book book : books) {
             double currentPrice = book.getPrice();
             double discountedPrice = currentPrice - (currentPrice * (discount / 100));
-            book.setPrice(discountedPrice);
+            book.setPrice(currentPrice, discount);
+            book.setDiscountedPrice(discountedPrice);
         }
         bookRepository.saveAll(books);
     }

@@ -28,6 +28,7 @@ public class Book {
     private String yearPublished; // General info
     private String bookDescription; //General info
     private double price;
+    private double discountedPrice;
 
     private double rating;
 
@@ -107,8 +108,17 @@ public class Book {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(double price, double discount) {
         this.price = price;
+        this.discountedPrice = price - (price * (discount/100));
+    }
+
+    public double getDiscountedPrice(double discountedPrice){
+        return discountedPrice;
+    }
+
+    public void setDiscountedPrice(double discountedPrice){
+        this.discountedPrice = discountedPrice;
     }
 
     public int getSalesCount() {
