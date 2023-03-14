@@ -22,4 +22,13 @@ import java.net.URI;
             User savedUser = userRepository.save(user);
             return ResponseEntity.created(URI.create("/users/" + savedUser.getId())).body(savedUser);
         }
+
+        @GetMapping("/{id}")
+        public ResponseEntity<User> getUser(@PathVariable String id) {
+            User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+            return ResponseEntity.ok().body(user);
+        }
+
     }
+
+
