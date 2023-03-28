@@ -6,8 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.Optional;
 
-    @RestController
+@RestController
     @RequestMapping("/api/users")
     public class UserController {
         @Autowired
@@ -29,8 +30,23 @@ import java.net.URI;
                     .orElseThrow(() -> new UserNotFoundException(username));
             return ResponseEntity.ok().body(user);
         }
-
+        @PutMapping("/{username}")
+        public ResponseEntity<User> updateUser(@PathVariable String username, @RequestBody User updatedUser) {
+            Optional<User> optionalUser = userRepository.findByUsername(username);
+            if (optionalUser.isPresent()) {
+                User user = optionalUser.get();
+                user.setUsername(updatedUser.getUsername());
+                user.setPassword(updatedUser.getPassword());
+                user.setName(updatedUser.getName());
+                user.setHomeAddress(updatedUser.getHomeAddress());
+                User savedUser = userRepository.save(user);
+                return ResponseEntity.ok().body(savedUser);
+            } else {
+                throw new UserNotFoundException(username);
+            }
+        }
     }
+
 
 
 
