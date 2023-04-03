@@ -9,6 +9,7 @@ public class User {
     private String name;
     private String email;
     private String homeAddress;
+    private ShoppingCart shoppingCart;
 
     // Constructors, getters and setters
     public String getUsername() {
@@ -49,6 +50,13 @@ public class User {
 
     public void setHomeAddress(String homeAddress) {
         this.homeAddress = homeAddress;
+    }
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
     }
 
     public User() {
