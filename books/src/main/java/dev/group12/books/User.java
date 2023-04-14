@@ -10,6 +10,7 @@ public class User {
     private String email;
     private String homeAddress;
     private ShoppingCart shoppingCart;
+    private CreditCard creditCard;
 
     // Constructors, getters and setters
     public String getUsername() {
@@ -67,6 +68,14 @@ public class User {
     }
     public void setId(String id) {
         this.id = id;
+    }
+
+    public CreditCard getCreditCard() {
+        return creditCard;
+    }
+
+    public void setCreditCard(CreditCard creditCard) {
+        this.creditCard = creditCard;
     }
 }
 

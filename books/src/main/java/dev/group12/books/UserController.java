@@ -2,8 +2,10 @@ package dev.group12.books;
 
 import dev.group12.books.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.net.URI;
 import java.util.Optional;
@@ -45,7 +47,17 @@ import java.util.Optional;
                 throw new UserNotFoundException(username);
             }
         }
+    @PostMapping("/{username}/creditcard")
+    public ResponseEntity<User> addCreditCard(@PathVariable String username, @RequestBody CreditCard creditCard) {
+        User user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
+
+        user.setCreditCard(creditCard);
+        userRepository.save(user);
+        return ResponseEntity.ok(user);
     }
+
+}
 
 
 
