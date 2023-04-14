@@ -8,7 +8,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/cart")
-public class ShoppingCartController {
+public class
+ShoppingCartController {
 
     @Autowired
     private ShoppingCartService shoppingCartService;

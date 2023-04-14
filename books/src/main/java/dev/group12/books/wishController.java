@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/api/Wishlist")
 public class wishController {
@@ -32,5 +34,13 @@ public class wishController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
+    @GetMapping("/get/{wishlistId}")
+    public ResponseEntity<wish> getWishlistBook(@PathVariable ("wishlistId") String wishlistId) {
+        Optional<wish> optionalWish =  wishlistRepository.findById(wishlistId);
+        if (optionalWish.isPresent()) {
+            return new ResponseEntity<>(optionalWish.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
