@@ -5,7 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.bson.types.ObjectId;
+import org.json.JSONException;
 import java.util.List;
+import java.util.Arrays;
 import java.util.Optional;
 
 @RestController
@@ -26,8 +29,29 @@ public class BookController {
     public ResponseEntity<Optional<Book>> getSingleBook(@PathVariable String ISBN){
         //The PathVariable converts the ObjectId into an id that we'll use to find a single book
         return new ResponseEntity<Optional<Book>>(bookService.singleBook(ISBN), HttpStatus.OK);
-
     }
+
+    // An alternate method to allow the user to get books by the ISBN. 
+    @GetMapping("/isbn/{ISBN}")
+    public ResponseEntity<Optional<Book>> getSingleBookAgain(@PathVariable String ISBN){ 
+        return getSingleBook(ISBN);
+    }
+
+    //This mehtod WORKS by using /author/{author} to searched. 
+     @GetMapping("/author/{author}") // endpoint to retrieve author by name.  
+     public ResponseEntity<List<Book>> getBooksByAuthor(@PathVariable List<String> author) {
+          List<Book> books = bookService.getBooksByAuthor(author);
+          return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+    // This method works by retrieving a book by an authors last name as an alternate method. 
+    // @GetMapping("/author/{lastName}")
+    // public ResponseEntity<List<Book>> authorsBooks(@PathVariable String lastName) {
+    //     List<String> authors = Arrays.asList(authors.split("\\s+"));
+    //     List<Book> books = bookService.getBooksByAuthorLastName(lastName);
+    //     return new ResponseEntity<>(books, HttpStatus.OK);
+    // }
+
+    
 
     //this method WORKS by using /genre/{name of genre to be searched}
     @GetMapping("/genre/{genre}") //Endpoint to retrieve all books by specific genre, takes {genre} as parameter
@@ -74,6 +98,59 @@ public class BookController {
         String response = count + " books were updated with discount of " + discount;
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+    
+    @GetMapping("/id/{id}")
+    public ResponseEntity<Optional<Book>> getSingleBookById(@PathVariable String id) {
+        return new ResponseEntity<Optional<Book>>(bookService.singleBook(id), HttpStatus.OK);
+    }
 
+
+    private final BookRepository bookRepository;
+
+    public BookController(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
+    //Allows the admin to create and save a book. 
+    @PostMapping 
+    public ResponseEntity<Void> createBook(@RequestBody Book book) {
+        bookRepository.save(book);
+        return ResponseEntity.ok().build();
+    }
+    // An alternate method to allow the user to get books by the ISBN. 
+    //  @GetMapping("/isbn/{isbn}")
+    //  public ResponseEntity<BookDetails> getBookByIsbn(@PathVariable String isbn) {
+    //      Optional<Book> bookJson = bookRepository.findBookByBookISBN(isbn);
+    //      org.json.JSONObject bookObj = null;
+    //      try {
+    //          bookObj = new org.json.JSONObject(bookJson);
+    //      } catch (JSONException e) {
+    //          throw new RuntimeException(e);
+    //      }
+    //      BookDetails book = new BookDetails(bookObj);
+    //      return ResponseEntity.ok(book);
+    //  }
+
+    //This method is an API endpoint that handles HTTP GET requests to 
+    //"/book". When the endpoint is called, it retrieves all books by calling 
+    //the getBooks() method from the bookService.
+    // @GetMapping("/book")
+    // public ResponseEntity<List<BookDTO>> getBooks() {
+    //     List<BookDTO> books = bookService.getBooks();
+    //     if (books.isEmpty()) {
+    //         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    //     }
+    //     return new ResponseEntity<>(books, HttpStatus.OK);
+    // }
+
+    //This method is an API endpoint that parses the JSON file and Outputs Book descriptions.  
+    @GetMapping("/descriptions") 
+    public ResponseEntity<List<String>> getBookDescriptions () {
+        List<String> books = bookService.getBookDescriptions();
+        return new ResponseEntity<>(books,HttpStatus.OK);
+    }
 
 }
+
+
+
+

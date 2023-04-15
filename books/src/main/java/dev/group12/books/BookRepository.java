@@ -15,7 +15,7 @@ public interface BookRepository extends MongoRepository<Book, String> {
     List<Book> findByGenreIn(List<String> genre);
     List<Book> findByRatingGreaterThanEqual(double rating, Sort sortByRatingDesc);
     List<Book> findByPublisher(String publisher);
-
+    List<Book> findByAuthorIn(List<String> author); 
+    //List<Book> getBooks(List<String> books); 
 }
-
 
