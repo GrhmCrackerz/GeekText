@@ -128,4 +128,20 @@ public class Book {
     public void setSalesCount(int salesCount) {
         this.salesCount = salesCount;
     }
+
+    // public Book(String bookISBN, String title, String author, List<String> genre, int copiesSold, String publisher, int discount, int yearPublished, String bookDescription, double price, double discountedPrice, double rating) {
+    //     this.bookISBN = bookISBN;
+    //     this.title = title;
+    //     this.author = author;
+    //     this.genre = genre;
+    //     this.salesCount = salesCount;
+    //     this.publisher = publisher;
+    //     //this.discount = discount;
+    //     //this.yearPublished = yearPublished;
+    //     this.bookDescription = bookDescription;
+    //     this.price = price;
+    //     this.discountedPrice = discountedPrice;
+    //     this.rating = rating;
+    // }
+
 }
