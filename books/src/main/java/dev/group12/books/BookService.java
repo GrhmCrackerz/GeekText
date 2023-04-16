@@ -52,7 +52,8 @@ public class BookService {
         bookRepository.saveAll(books);
     }
 
-    public void createBook(BookDetails book) {
+    public void createBook(Book book) {
+        bookRepository.save(book);
     }
 
     public Book findByIsbn(String isbn) {
@@ -82,6 +83,10 @@ public class BookService {
         return bookRepository.findByPublisher(publisher);
     }
 
+    public List<Book> getBooksByAuthorId(String author) {
+        return bookRepository.findByAuthorId(author);
+    }
+
     public int applyDiscountToAllBooks(double discount){
         List<Book> books = bookRepository.findAll();
         for(Book book : books){
@@ -93,15 +98,16 @@ public class BookService {
         return books.size();
     }
 
-    public List<Book> getBooksByAuthor(List<String> author){
-        return bookRepository.findByAuthorIn(author);
-    }
+    // public List<Book> getBooksByAuthor(List<String> author){
+    //     return bookRepository.findByAuthorIn(author);
+    // }
 
     public List<String> getBookDescriptions() {
         return bookRepository.findAll().stream() 
                 .map(Book::getBookDescription)
                 .collect(Collectors.toList());
     }
+    
 
 //     public List<Book> getBooksByAuthorLastName(String lastName) {
 //     List<Book> books = bookRepository.getBooks();

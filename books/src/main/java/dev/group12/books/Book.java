@@ -6,10 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
-
 import java.util.List;
+
 
 @Document(collection = "books")
 @Data
@@ -18,9 +19,10 @@ import java.util.List;
 public class Book {
     @Id
     private String id;
+    private String authorId;
     private String bookISBN; //actual ISBN of book
     private String title; // General info
-    private String author; // General info
+    //private Author author; // General info
     private List<String> genre; // ArrayList to include the genres applicable to book
     private int salesCount; //Used for BestSeller feature
     private String publisher; // Needed for feature that updates discounts by publisher
@@ -29,7 +31,6 @@ public class Book {
     private String bookDescription; //General info
     private double price;
     private double discountedPrice;
-
     private double rating;
 
     public String getBookISBN() {
@@ -48,13 +49,13 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
-    }
+    // public Author getAuthor() {
+    //     return author;
+    // }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+    // public void setAuthor(Author author) {
+    //     this.author = author;
+    // }
 
     public List<String> getGenre() {
         return genre;
@@ -129,19 +130,7 @@ public class Book {
         this.salesCount = salesCount;
     }
 
-    // public Book(String bookISBN, String title, String author, List<String> genre, int copiesSold, String publisher, int discount, int yearPublished, String bookDescription, double price, double discountedPrice, double rating) {
-    //     this.bookISBN = bookISBN;
-    //     this.title = title;
-    //     this.author = author;
-    //     this.genre = genre;
-    //     this.salesCount = salesCount;
-    //     this.publisher = publisher;
-    //     //this.discount = discount;
-    //     //this.yearPublished = yearPublished;
-    //     this.bookDescription = bookDescription;
-    //     this.price = price;
-    //     this.discountedPrice = discountedPrice;
-    //     this.rating = rating;
+    // public String getAuthorId() {
+    //     return authorId;
     // }
-
 }

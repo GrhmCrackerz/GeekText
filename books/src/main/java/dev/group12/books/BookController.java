@@ -19,6 +19,9 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private AuthorService authorService;
+
     @GetMapping
     public ResponseEntity<List<Book>> getAllBooks(){ //Endpoint to retrieve all books
         return new ResponseEntity<List<Book>>(bookService.allBooks(), HttpStatus.OK);
@@ -28,7 +31,10 @@ public class BookController {
     @GetMapping("/{ISBN}") //Endpoint to retrieve a single book by using its ISBN
     public ResponseEntity<Optional<Book>> getSingleBook(@PathVariable String ISBN){
         //The PathVariable converts the ObjectId into an id that we'll use to find a single book
-        return new ResponseEntity<Optional<Book>>(bookService.singleBook(ISBN), HttpStatus.OK);
+        Optional<Book> book;
+        book = bookService.singleBook(ISBN);
+        //book.ifPresent(foundBook -> foundBook.setAuthor(authorService.singleAuthor(foundBook.getAuthorId())));
+        return new ResponseEntity<Optional<Book>>(book, HttpStatus.OK);
     }
 
     // An alternate method to allow the user to get books by the ISBN. 
@@ -37,12 +43,18 @@ public class BookController {
         return getSingleBook(ISBN);
     }
 
-    //This mehtod WORKS by using /author/{author} to searched. 
-     @GetMapping("/author/{author}") // endpoint to retrieve author by name.  
-     public ResponseEntity<List<Book>> getBooksByAuthor(@PathVariable List<String> author) {
-          List<Book> books = bookService.getBooksByAuthor(author);
-          return new ResponseEntity<>(books, HttpStatus.OK);
-    }
+    // //This mehtod WORKS by using /author/{author} to searched. 
+    //  @GetMapping("/author/{author}") // endpoint to retrieve author by name.  
+    //  public ResponseEntity<List<Book>> getBooksByAuthor(@PathVariable List<String> author) {
+    //       List<Book> books = bookService.getBooksByAuthor(author);
+    //       return new ResponseEntity<>(books, HttpStatus.OK);
+    // }
+    // 
+    @GetMapping("/author/{authorId}") // endpoint to retrieve author by name.  
+    public ResponseEntity<List<Book>> getBooksByAuthorId(@PathVariable String authorId) {
+         List<Book> books = bookService.getBooksByAuthorId(authorId);
+         return new ResponseEntity<List<Book>>(books, HttpStatus.OK);
+   }
     // //This method works by retrieving a book by an authors last name as an alternate method. 
     // @GetMapping("/author/{lastName}")
     // public ResponseEntity<List<Book>> authorsBooks(@PathVariable String lastName) {
@@ -105,51 +117,36 @@ public class BookController {
     }
 
 
-    private final BookRepository bookRepository;
+    // private final BookRepository bookRepository;
+    // private final AuthorRepository authorRepository;
 
-    public BookController(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
+    public BookController() { //BookRepository bookRepository, AuthorRepository authorRepository) {
+        // this.bookRepository = bookRepository;
+        // this.authorRepository = authorRepository;
     }
+
     //Allows the admin to create and save a book. 
     @PostMapping("/create/book") 
     public ResponseEntity<Void> createBook(@RequestBody Book book) {
-        bookRepository.save(book);
+        bookService.createBook(book);
         return ResponseEntity.ok().build();
     }
-
-     //Alternate method to allow an admin to create a book. 
-    // @PostMapping("/books")
-    // public ResponseEntity<Book> addBook(@RequestBody Book book) {
-    //     // create a new Book object
-    //     Book newBook = new Book();
-    //     newBook.setBookISBN(book.getBookISBN());
-    //     newBook.setTitle(book.getTitle());
-    //     newBook.setAuthor(book.getAuthor());
-    //     newBook.setGenre(book.getGenre());
-    //     newBook.setSalesCount(book.getSalesCount());
-    //     newBook.setPublisher(book.getPublisher());
-    //     newBook.setDiscount(book.getDiscount());
-    //     newBook.setYearPublished(book.getYearPublished());
-    //     newBook.setBookDescription(book.getBookDescription());
-    //     newBook.setPrice(book.getPrice());
-    //     newBook.setDiscountedPrice(book.getDiscountedPrice());
-    //     newBook.setRating(book.getRating());
-    
-    //     // save the new book using the repository
-    //     Book savedBook = bookRepository.save(newBook);
-    
-    //     // return a response with the saved book and a 201 status code
-    //     return ResponseEntity.status(HttpStatus.CREATED).body(savedBook);
-    // }
-
-
-
     //This method is an API endpoint that parses the JSON file and outputs book descriptions.  
     @GetMapping("/descriptions") 
     public ResponseEntity<List<String>> getBookDescriptions () {
         List<String> books = bookService.getBookDescriptions();
         return new ResponseEntity<>(books,HttpStatus.OK);
     }
+
+    //Allows admin to create and save author
+    @PostMapping("/create/author")
+    public ResponseEntity<Void> createAuthor(@RequestBody Author author) {
+        authorService.createAuthor(author);
+        return ResponseEntity.ok().build(); 
+    }
+   
+    
+
 
 }
 
