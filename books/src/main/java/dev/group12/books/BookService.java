@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.bson.types.ObjectId;
+import java.util.stream.Collectors;
+// import java.util.Array;
 
 import java.util.List;
 import java.util.Optional;
@@ -49,6 +52,24 @@ public class BookService {
         bookRepository.saveAll(books);
     }
 
+    public void createBook(Book book) {
+        bookRepository.save(book);
+    }
+
+    public Book findByIsbn(String isbn) {
+        return null;
+    }
+
+    public List<BookDTO> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<BookDTO> books) {
+        this.books = books;
+    }
+    
+    private List<BookDTO> books;
+
 //    public Book applyDiscount(String bookISBN, double discount){
 //        Book book = bookRepository.findBookByBookISBN(bookISBN).orElseThrow(() -> new BookNotFoundException(bookISBN));
 //        double currentPrince = book.getPrice();
@@ -62,6 +83,10 @@ public class BookService {
         return bookRepository.findByPublisher(publisher);
     }
 
+    public List<Book> getBooksByAuthorId(String author) {
+        return bookRepository.findByAuthorId(author);
+    }
+
     public int applyDiscountToAllBooks(double discount){
         List<Book> books = bookRepository.findAll();
         for(Book book : books){
@@ -73,4 +98,26 @@ public class BookService {
         return books.size();
     }
 
+    // public List<Book> getBooksByAuthor(List<String> author){
+    //     return bookRepository.findByAuthorIn(author);
+    // }
+
+    public List<String> getBookDescriptions() {
+        return bookRepository.findAll().stream() 
+                .map(Book::getBookDescription)
+                .collect(Collectors.toList());
+    }
+    
+
+//     public List<Book> getBooksByAuthorLastName(String lastName) {
+//     List<Book> books = bookRepository.getBooks();
+//     List<Book> booksByAuthor = new ArrayList<>();
+//     for (Book book : books) {
+//         String author = book.getAuthor();
+//         if (author.toLowerCase().contains(lastName.toLowerCase())) {
+//             booksByAuthor.add(book);
+//         }
+//     }
+//     return booksByAuthor;
+// }
 }

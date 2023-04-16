@@ -6,10 +6,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
-
 import java.util.List;
+
 
 @Document(collection = "books")
 @Data
@@ -18,9 +19,10 @@ import java.util.List;
 public class Book {
     @Id
     private String id;
+    private String authorId;
     private String bookISBN; //actual ISBN of book
     private String title; // General info
-    private String author; // General info
+    //private Author author; // General info
     private List<String> genre; // ArrayList to include the genres applicable to book
     private int salesCount; //Used for BestSeller feature
     private String publisher; // Needed for feature that updates discounts by publisher
@@ -29,7 +31,6 @@ public class Book {
     private String bookDescription; //General info
     private double price;
     private double discountedPrice;
-
     private double rating;
 
     public String getBookISBN() {
@@ -48,13 +49,13 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
-        return author;
-    }
+    // public Author getAuthor() {
+    //     return author;
+    // }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+    // public void setAuthor(Author author) {
+    //     this.author = author;
+    // }
 
     public List<String> getGenre() {
         return genre;
@@ -128,4 +129,8 @@ public class Book {
     public void setSalesCount(int salesCount) {
         this.salesCount = salesCount;
     }
+
+    // public String getAuthorId() {
+    //     return authorId;
+    // }
 }
