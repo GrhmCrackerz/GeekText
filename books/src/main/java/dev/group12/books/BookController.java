@@ -31,10 +31,7 @@ public class BookController {
     @GetMapping("/{ISBN}") //Endpoint to retrieve a single book by using its ISBN
     public ResponseEntity<Optional<Book>> getSingleBook(@PathVariable String ISBN){
         //The PathVariable converts the ObjectId into an id that we'll use to find a single book
-        Optional<Book> book;
-        book = bookService.singleBook(ISBN);
-        //book.ifPresent(foundBook -> foundBook.setAuthor(authorService.singleAuthor(foundBook.getAuthorId())));
-        return new ResponseEntity<Optional<Book>>(book, HttpStatus.OK);
+        return new ResponseEntity<Optional<Book>>(bookService.singleBook(ISBN), HttpStatus.OK);
     }
 
     // An alternate method to allow the user to get books by the ISBN. 
@@ -149,7 +146,3 @@ public class BookController {
 
 
 }
-
-
-
-

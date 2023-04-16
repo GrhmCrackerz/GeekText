@@ -18,11 +18,9 @@
 	</properties>
 	<dependencies>
 		<dependency>
-		<!--org.json dependency to lookup parent-->
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>20230227</version>
-			<!-- <type>bundle</type> -->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
